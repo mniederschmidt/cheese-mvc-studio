@@ -28,20 +28,6 @@ public class UserController {
                       Errors errors, Model model,
                       @RequestParam String verify){
 
-        // removed parameter --> @RequestParam String verify,
-//        if(verify.equals(user.getPassword())){
-//            model.addAttribute("title", "Add User");
-//            model.addAttribute("newUser", user.getUsername());
-//            model.addAttribute(user);
-//            UserData.add(user);
-//            return "user/index";
-//        } else {
-//            model.addAttribute("title", "Add User");
-//            model.addAttribute("error", "Passwords do not match");
-//            model.addAttribute(user);
-//            return "user/add";
-//        }
-
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add User");
             return "user/add";
@@ -49,7 +35,6 @@ public class UserController {
 
         if (verify.equals(newUser.getPassword())) {
             model.addAttribute("title", "Add User");
-            model.addAttribute("newUser", newUser.getUsername());
             model.addAttribute(newUser);
             UserData.add(newUser);
             return "user/index";
