@@ -33,16 +33,15 @@ public class UserController {
             return "user/add";
         }
 
-        if (verify.equals(newUser.getPassword())) {
-            model.addAttribute("title", "Add User");
-            model.addAttribute(newUser);
-            UserData.add(newUser);
-            return "user/index";
-        }
-        else {
+        if (!(verify.equals(newUser.getPassword()))) {
             model.addAttribute("title", "Add User");
             model.addAttribute("error", "Passwords do not match");
             return "user/add";
         }
+
+        model.addAttribute("title", "List Users");
+        model.addAttribute(newUser);
+        UserData.add(newUser);
+        return "user/index";
     }
 }
